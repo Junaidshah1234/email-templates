@@ -16,8 +16,26 @@ Hand-coded, responsive, cross-client compatible HTML email templates for Gmail, 
 
 ## 📬 Templates
 
-> 🚧 **Coming soon** — Templates are being uploaded.
+### 1. Auxilium Newsletter — September 2026
+A monthly newsletter template for a UAE-based HR consultancy.
 
+**Features:**
+- Hero section with VML background (Outlook compatible)
+- 4-column service grid (responsive → stacks on mobile)
+- GCC update section with 4 country cards
+- Article section with 2-column layout
+- Full footer with contact details
+
+🔗 **[View Live Template →](https://junaidshah1234.github.io/email-templates/auxilium-newsletter/)**
+
+---
+
+### 🚧 More Coming Soon
+
+- Welcome Email
+- Promotional Email
+- Transactional Email (Order Confirmation)
+- Password Reset Email
 ---
 
 ## 👨‍💻 About Me
