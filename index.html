@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>HTML Email Templates — Junaid Shah</title>
+<meta name="description" content="Hand-coded, responsive, cross-client compatible HTML email templates for Gmail, Outlook, Apple Mail, and more." />
+<meta name="author" content="Junaid Shah" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📧</text></svg>">
+<style>
+  :root{
+    --bg:#0a0e17;
+    --bg-2:#0e1420;
+    --card:#131a29;
+    --border:#1f2937;
+    --border-hover:#2d3a52;
+    --text:#e8ebf0;
+    --muted:#94a3b8;
+    --accent:#3b82f6;
+    --accent-2:#06b6d4;
+    --success:#10b981;
+    --warning:#f59e0b;
+    --gradient:linear-gradient(135deg,#3b82f6 0%,#06b6d4 100%);
+    --font-display:'Space Grotesk','Inter',sans-serif;
+    --font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-body);
+    background:var(--bg);color:var(--text);
+    line-height:1.65;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  .hero{
+    padding:100px 0 70px;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;top:-250px;right:-250px;
+    width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(59,130,246,.16),transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:'';position:absolute;bottom:-250px;left:-250px;
+    width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);
+    pointer-events:none;
+  }
+  .hero > *{position:relative;z-index:1}
+
+  .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+  .badges img{height:28px}
+
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(2rem,5vw,3.2rem);
+    font-weight:700;line-height:1.1;
+    letter-spacing:-.025em;margin-bottom:20px;
+  }
+  .gradient-text{
+    background:var(--gradient);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .hero p{
+    font-size:1.1rem;color:var(--muted);
+    max-width:640px;margin:0 auto 32px;line-height:1.7;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 28px;border-radius:9px;
+    font-weight:600;font-size:.95rem;
+    transition:all .25s;
+    cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--text);color:var(--bg);
+  }
+  .btn-primary:hover{transform:translateY(-2px);opacity:.88}
+
+  /* SECTIONS */
+  section{padding:70px 0}
+  section.alt{background:var(--bg-2)}
+  .section-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.82rem;font-weight:600;
+    color:var(--accent-2);text-transform:uppercase;
+    letter-spacing:.12em;margin-bottom:14px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .section-label::before{content:'//';color:var(--accent)}
+  h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.6rem,3.5vw,2.2rem);
+    font-weight:700;letter-spacing:-.025em;
+    margin-bottom:16px;line-height:1.2;text-align:center;
+  }
+  .section-desc{
+    color:var(--muted);max-width:640px;
+    margin:0 auto 50px;font-size:1rem;text-align:center;
+  }
+
+  /* SKILLS TABLE */
+  .skills-table{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;overflow:hidden;
+    max-width:800px;margin:0 auto;
+  }
+  .skills-table table{width:100%;border-collapse:collapse}
+  .skills-table td{
+    padding:16px 20px;
+    border-bottom:1px solid var(--border);
+    font-size:.92rem;
+  }
+  .skills-table tr:last-child td{border-bottom:none}
+  .skills-table td:first-child{
+    width:60px;font-size:1.3rem;text-align:center;
+  }
+  .skills-table td:nth-child(2){
+    font-weight:600;width:220px;
+  }
+  .skills-table td:nth-child(3){color:var(--muted)}
+
+  /* TEMPLATE CARD */
+  .template-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;padding:36px;
+    max-width:900px;margin:0 auto;
+    transition:all .3s;position:relative;overflow:hidden;
+  }
+  .template-card::before{
+    content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+    background:var(--gradient);
+  }
+  .template-card:hover{
+    border-color:var(--border-hover);
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+  }
+  .template-header{
+    display:flex;justify-content:space-between;
+    align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;
+  }
+  .template-card h3{
+    font-family:var(--font-display);
+    font-size:1.4rem;font-weight:600;
+    margin-bottom:10px;letter-spacing:-.015em;
+  }
+  .tag{
+    display:inline-block;padding:5px 12px;
+    border-radius:7px;font-size:.72rem;font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+    background:rgba(16,185,129,.1);
+    border:1px solid rgba(16,185,129,.3);
+    color:var(--success);
+    text-transform:uppercase;letter-spacing:.05em;
+  }
+  .template-card p{color:var(--muted);font-size:.95rem;margin-bottom:16px;line-height:1.7}
+  .template-card ul{list-style:none;margin-bottom:24px}
+  .template-card ul li{
+    position:relative;padding-left:24px;
+    color:var(--muted);font-size:.9rem;
+    margin-bottom:9px;line-height:1.6;
+  }
+  .template-card ul li::before{
+    content:'▸';position:absolute;left:0;
+    color:var(--accent);font-weight:700;font-size:1.1em;
+  }
+  .template-card .btn{
+    background:var(--text);color:var(--bg);
+  }
+
+  /* COMING SOON */
+  .coming-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:18px;max-width:800px;margin:0 auto;
+  }
+  @media(max-width:640px){.coming-grid{grid-template-columns:1fr}}
+  .coming-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;padding:22px;
+    display:flex;align-items:center;gap:14px;
+    transition:all .25s;
+  }
+  .coming-card:hover{
+    border-color:var(--border-hover);
+    transform:translateY(-3px);
+  }
+  .coming-card .icon{font-size:1.6rem}
+  .coming-card .text{font-weight:600;font-size:.95rem}
+  .coming-card .status{
+    font-size:.75rem;color:var(--warning);
+    font-family:'JetBrains Mono',monospace;
+    margin-top:3px;
+  }
+
+  /* ABOUT */
+  .about-box{
+    background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(6,182,212,.06));
+    border:1px solid var(--border);
+    border-radius:24px;padding:50px 40px;
+    text-align:center;max-width:800px;margin:0 auto;
+  }
+  .about-box p{
+    color:var(--muted);font-size:1.05rem;
+    line-height:1.8;max-width:640px;margin:0 auto;
+  }
+
+  /* CONNECT */
+  .connect-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:18px;max-width:800px;margin:0 auto;
+  }
+  @media(max-width:640px){.connect-grid{grid-template-columns:1fr}}
+  .connect-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;padding:26px;
+    text-align:center;transition:all .25s;
+  }
+  .connect-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(59,130,246,.15);
+  }
+  .connect-card .icon{font-size:2rem;margin-bottom:12px}
+  .connect-card .label{
+    font-size:.75rem;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.1em;
+    margin-bottom:6px;font-family:'JetBrains Mono',monospace;
+  }
+  .connect-card .name{font-weight:600;font-size:.95rem}
+
+  /* FOOTER */
+  footer{
+    padding:40px 0 30px;border-top:1px solid var(--border);
+    text-align:center;color:var(--muted);font-size:.85rem;
+  }
+  footer p{opacity:.8}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="container">
+    <div class="badges">
+      <a href="https://www.upwork.com/freelancers/~0139f4995660a6a8ea" target="_blank">
+        <img src="https://img.shields.io/badge/Upwork-100%25_JSS-14a800?style=for-the-badge&logo=upwork&logoColor=white" alt="Upwork">
+      </a>
+      <a href="https://github.com/Junaidshah1234" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/syed-junaid-shah" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-Connect-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+      </a>
+    </div>
+    <h1>📧 <span class="gradient-text">HTML Email Templates</span></h1>
+    <p>Hand-coded · Responsive · Cross-Client Compatible. Templates that render perfectly in Gmail, Outlook, Apple Mail, and every major email client.</p>
+  </div>
+</header>
+
+<!-- ===== SKILLS ===== -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">Skills Demonstrated</div>
+    <h2 class="reveal">What's Under the Hood</h2>
+    <div class="skills-table reveal">
+      <table>
+        <tr><td>✍️</td><td>Hand-coded HTML/CSS</td><td>Table-based layout — no drag-drop builders</td></tr>
+        <tr><td>📱</td><td>Responsive Design</td><td>Media queries for mobile devices</td></tr>
+        <tr><td>📨</td><td>Outlook Compatibility</td><td>VML, conditional comments, MSO fixes</td></tr>
+        <tr><td>🧪</td><td>Cross-client Testing</td><td>Litmus, Email on Acid</td></tr>
+        <tr><td>🔗</td><td>Platform Integration</td><td>HubSpot, Mailchimp, Klaviyo</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEMPLATES ===== -->
+<section class="alt">
+  <div class="container">
+    <div class="section-label reveal">Live Templates</div>
+    <h2 class="reveal">Featured Work</h2>
+    <p class="section-desc reveal">Production-ready templates, hand-coded and tested across every major email client.</p>
+
+    <div class="template-card reveal">
+      <div class="template-header">
+        <div>
+          <h3>📨 Auxilium Newsletter</h3>
+          <p style="margin:0;color:var(--muted);font-size:.85rem">September 2026 · UAE-Based HR Consultancy</p>
+        </div>
+        <span class="tag">✅ Live</span>
+      </div>
+      <p>A monthly newsletter template designed for a professional HR consultancy in the UAE.</p>
+      <ul>
+        <li>🎨 Hero section with <strong>VML background</strong> (Outlook compatible)</li>
+        <li>📊 <strong>4-column service grid</strong> — stacks beautifully on mobile</li>
+        <li>🌍 <strong>GCC update section</strong> with 4 country cards</li>
+        <li>📰 <strong>Article section</strong> with 2-column layout</li>
+        <li>📞 Full footer with contact details</li>
+      </ul>
+      <a href="https://junaidshah1234.github.io/email-templates/auxilium-newsletter/" target="_blank" class="btn">
+        🔗 View Live Template →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMING SOON ===== -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">Coming Soon</div>
+    <h2 class="reveal">More Templates in Progress</h2>
+    <p class="section-desc reveal">New templates are being added regularly.</p>
+
+    <div class="coming-grid reveal">
+      <div class="coming-card">
+        <span class="icon">👋</span>
+        <div>
+          <div class="text">Welcome Email</div>
+          <div class="status">🔄 In Progress</div>
+        </div>
+      </div>
+      <div class="coming-card">
+        <span class="icon">🎉</span>
+        <div>
+          <div class="text">Promotional Email</div>
+          <div class="status">🔄 In Progress</div>
+        </div>
+      </div>
+      <div class="coming-card">
+        <span class="icon">🧾</span>
+        <div>
+          <div class="text">Transactional Email</div>
+          <div class="status">🔄 In Progress</div>
+        </div>
+      </div>
+      <div class="coming-card">
+        <span class="icon">🔐</span>
+        <div>
+          <div class="text">Password Reset Email</div>
+          <div class="status">🔄 In Progress</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="alt">
+  <div class="container">
+    <div class="section-label reveal">About Me</div>
+    <div class="about-box reveal">
+      <h2>Hi, I'm Junaid Shah 👋</h2>
+      <p>A Full-Stack WordPress Expert and HTML Email Developer with a <strong style="color:var(--success)">100% Job Success Score on Upwork</strong>. I build custom WordPress solutions, integrate complex APIs, and hand-code responsive HTML email templates that work across all major email clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONNECT ===== -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">Let's Connect</div>
+    <h2 class="reveal">Find Me Online</h2>
+    <div class="connect-grid reveal">
+      <a href="https://www.upwork.com/freelancers/~0139f4995660a6a8ea" target="_blank" class="connect-card">
+        <div class="icon">🟢</div>
+        <div class="label">Upwork</div>
+        <div class="name">Top Rated Profile</div>
+      </a>
+      <a href="https://www.linkedin.com/in/syed-junaid-shah" target="_blank" class="connect-card">
+        <div class="icon">💼</div>
+        <div class="label">LinkedIn</div>
+        <div class="name">Syed Junaid Shah</div>
+      </a>
+      <a href="https://github.com/Junaidshah1234" target="_blank" class="connect-card">
+        <div class="icon">🐙</div>
+        <div class="label">GitHub</div>
+        <div class="name">@Junaidshah1234</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <p>⭐️ From WordPress plugins to HTML email templates — I build solutions that just work.</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll Reveal
+  (function(){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
